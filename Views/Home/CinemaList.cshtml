@@ -1,0 +1,13 @@
+﻿
+@using Cinema.Models.Rep;
+@{ 
+    HomeRep h = new HomeRep();
+    var movies = h.GetMovies();
+}
+ @{
+     foreach (var item in movies)
+     {
+         <option value="@item.Id"> @item.Name</option>
+     }
+
+ }

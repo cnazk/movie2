@@ -1,0 +1,76 @@
+﻿@model  Cinema.Models.ViewModels.LoginViewModel
+@{
+    ViewBag.Title = "user login";
+}
+<html>
+<head>
+    <link href="css/main.css" rel="stylesheet" media="all">
+    <link href="css/site.css" rel="stylesheet" media="all">
+    <style>
+
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+        .h{
+            color:whitesmoke;
+           
+        }
+        .checkbox{
+            zoom:1.5;        
+
+        }
+        .btn--red{
+            background-color:red;
+        }
+    </style>
+</head>
+
+
+    <body style="background-color : black">
+        <div class="page-wrapper  p-t-180 p-b-100 font-poppins">
+            <div class="wrapper wrapper--w780">
+                <div>
+                    <div class="card-heading"></div>
+                    <div class="card-body">
+                        <h2 class="title">Login</h2>
+
+                        <form asp-action="Login" method="POST">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+
+                            <div class="input-group">
+                                < <input asp-for="mail" type="email" placeholder="Mail" class="form-group" />
+
+                            </div>
+                            <div class="input-group">
+                                <input asp-for="password" type="password" placeholder="Password" class="form-group" />
+
+                            </div>
+                            <div class="input-group h" >
+                                <label ><input type="checkbox" class="checkbox" />Remeber me?</label>
+                                
+
+                            </div>
+                            
+                            <div class="p-t-10">
+                                <button class="btn btn--pill btn--red " type="submit">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+      
+
+
+    </body>
+</html>

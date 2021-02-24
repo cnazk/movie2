@@ -1,0 +1,106 @@
+﻿@model Cinema.Models.ViewModels.RegisterViewModel
+@{
+    ViewBag.Title = "Resgisteration";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+    <!-- Title Page-->
+    <title> Register</title>
+    <!-- Icons font CSS-->
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <!-- Vendor CSS-->
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="css/main.css" rel="stylesheet" media="all">
+    <link href="css/site.css" rel="stylesheet" media="all">
+    <style>
+        .btn--red {
+            background-color: red;
+        }
+    </style>
+</head>
+<body style="background-color : black">
+    <div class="page-wrapper  p-t-180 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w780">
+            <div >
+                <div class="card-heading"></div>
+                <div class="card-body">
+                    <h2 class="title">Registration Info</h2>
+
+                    <form asp-action="Register"  method="POST">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+
+                        <div class="input-group">
+                            <input class="input--style-3 form-control" type="text" placeholder="FirstName" name="FirstName" asp-for="FirstName" />
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+
+                        <div class="input-group">
+
+                            <input class="input--style-3 form-control" type="text" placeholder="LastName" asp-for="LastName" />
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+                        <div class="input-group">
+
+                            <input asp-for="Mail" class="input--style-3 form-control" type="email" placeholder="Mail" />
+                            <span asp-validation-for="Mail" class="text-danger"></span>
+                        </div>
+                        <div class="input-group">
+
+                            <input asp-for="Password" class="input--style-3 form-control" type="password" placeholder="password" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="input-group">
+
+                            <input asp-for="ConfirmPassword" class="input--style-3 form-control" type="password" placeholder="confirm password" />
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                        </div>
+                        <div class="input-group">
+                            <div class="rs-select2 js-select-simple select--no-search">
+                                <select name="gender">
+                                    <option disabled="disabled" selected="selected">Gender</option>
+                                    <option>Male</option>
+                                    <option>Female</option>
+
+                                </select>
+                                <div class="select-dropdown"></div>
+                            </div>
+                        </div>
+                        <div class="input-group">
+
+                            <input asp-for="MobileNumber" class="input--style-3 form-control" type="text" placeholder="mobile" />
+                            <span asp-validation-for="MobileNumber" class="text-danger"></span>
+                        </div>
+
+                        <div class="p-t-10">
+                            <button class="btn btn--pill btn--red" type="submit">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+     </div>
+        <!-- Jquery JS-->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <!-- Vendor JS-->
+        <script src="vendor/select2/select2.min.js"></script>
+        <script src="vendor/datepicker/moment.min.js"></script>
+        <script src="vendor/datepicker/daterangepicker.js"></script>
+
+        <!-- Main JS-->
+        <script src="js/global.js"></script>
+</body>
+</html>

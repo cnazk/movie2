@@ -1,0 +1,192 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@using Cinema.Models.Db
+@inject SignInManager<User> signinmanager;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+
+
+        * {
+            font-family: Roboto, sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        .flexbox {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .search {
+            margin: 20px;
+        }
+
+            .search > h3 {
+                font-weight: normal;
+            }
+
+            .search > h1,
+            .search > h3 {
+                color: white;
+                margin-bottom: 15px;
+                text-shadow: 0 1px #0091c2;
+            }
+
+            .search > div {
+                display: inline-block;
+                position: relative;
+                filter: drop-shadow(0 1px #0091c2);
+            }
+
+                .search > div:after {
+                    content: "";
+                    background: white;
+                    width: 4px;
+                    height: 20px;
+                    position: absolute;
+                    top: 40px;
+                    right: 2px;
+                    transform: rotate(135deg);
+                }
+
+                .search > div > input {
+                    color: white;
+                    font-size: 16px;
+                    background: transparent;
+                    width: 25px;
+                    height: 25px;
+                    padding: 10px;
+                    border: solid 3px white;
+                    outline: none;
+                    border-radius: 35px;
+                    transition: width 0.5s;
+                }
+
+                    .search > div > input::placeholder {
+                        color: #efefef;
+                        opacity: 0;
+                        transition: opacity 150ms ease-out;
+                    }
+
+                    .search > div > input:focus::placeholder {
+                        opacity: 1;
+                    }
+
+                    .search > div > input:focus,
+                    .search > div > input:not(:placeholder-shown) {
+                        width: 250px;
+                    }
+    </style>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Cinema</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/main.css" />
+
+</head>
+<body style="background-color:black">
+
+
+    <header style="background-color:black">
+
+        <div class=" navbar navbar-expand-sm navbar-toggleable-sm navbar-light  border-bottom box-shadow mb-3">
+            <div>
+                <div class="container">
+
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Cinema</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+
+
+
+                    <ul class="navbar-nav flex-grow-1 ">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+
+                        <li class="navbar-nav flex-grow-1 ">
+                            @if (signinmanager.IsSignedIn(User))
+                            {
+            <li class="nav-item">
+                <form method="post" asp-action="Logout" asp-controller="Account">
+                    <button type="submit" class="nav-link btn-light py-0" style="width:auto">
+                        @User.Identity.Name
+                    </button>
+
+                </form>
+            </li>
+ }
+                        else
+                        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                            </li>}
+
+
+
+                            <li>
+                                <div class="flexbox col-6">
+                                    <div class="search">
+
+                                        <div>
+                                            <input type="text" placeholder="Search . . ." required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+        </header>
+
+
+
+        <div class="container">
+
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+
+        </div>
+
+
+        <footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; @(DateTime.Now.Year) - Cinema - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @RenderSection("Scripts", required: false)
+
+    </body>
+</html>
